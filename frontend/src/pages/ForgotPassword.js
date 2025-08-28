@@ -39,10 +39,9 @@ const ForgotPassword = () => {
     }
   };
 
-  // ✅ Step 2: Reset Password (with OTP)
-  const handleResetPassword = async (e) => {
+  // ✅ Step 2: Verify OTP
+  const handleVerifyOTP = async (e) => {
     e.preventDefault();
-
     const otp = otpDigits.join("");
 
     if (otp.length !== 4) {
@@ -50,16 +49,39 @@ const ForgotPassword = () => {
       return;
     }
 
+    try {
+      const res = await fetch(`${BASE_URL}/auth/verify-reset-otp`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email, otp }),
+      });
+      const result = await res.json();
+
+      if (!res.ok) {
+        Swal.fire("Error", result.message, "error");
+      } else {
+        Swal.fire("Success", "OTP verified successfully!", "success");
+        setStep(3);
+      }
+    } catch (err) {
+      Swal.fire("Error", err.message, "error");
+    }
+  };
+
+  // ✅ Step 3: Set New Password
+  const handleSetNewPassword = async (e) => {
+    e.preventDefault();
+
     if (newPassword !== confirmPassword) {
       Swal.fire("Error", "Passwords do not match", "error");
       return;
     }
 
     try {
-      const res = await fetch(`${BASE_URL}/auth/reset-password`, {
+      const res = await fetch(`${BASE_URL}/auth/set-new-password`, {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email, otp, newPassword }),
+        body: JSON.stringify({ email, newPassword, confirmPassword }),
       });
 
       const result = await res.json();
@@ -110,10 +132,9 @@ const ForgotPassword = () => {
                   </Form>
                 )}
 
-                {/* STEP 2: Enter OTP + Reset Password */}
+                {/* STEP 2: Verify OTP */}
                 {step === 2 && (
-                  <Form onSubmit={handleResetPassword}>
-                    {/* OTP Fields */}
+                  <Form onSubmit={handleVerifyOTP}>
                     <FormGroup
                       className="otp-input-group"
                       style={{
@@ -169,6 +190,15 @@ const ForgotPassword = () => {
                       ))}
                     </FormGroup>
 
+                    <Button className="btn secondary__btn auth__btn">
+                      Verify OTP
+                    </Button>
+                  </Form>
+                )}
+
+                {/* STEP 3: New + Confirm Password */}
+                {step === 3 && (
+                  <Form onSubmit={handleSetNewPassword}>
                     {/* New Password */}
                     <FormGroup style={{ position: "relative" }}>
                       <input
@@ -216,7 +246,7 @@ const ForgotPassword = () => {
                     </FormGroup>
 
                     <Button className="btn secondary__btn auth__btn">
-                      Reset Password
+                      Set New Password
                     </Button>
                   </Form>
                 )}
