@@ -87,24 +87,24 @@ cd frontend
 npm install
 npm start
 
-📂 **Folder Structure**
+**## 📂 **Folder Structure****
 Travel-World/
 │── backend/        # Node.js + Express backend
 │── frontend/       # React.js frontend
 │── README.md
 
 
-📈 **Project Workflow**
+## 📈 **Project Workflow**
 graph TD;
     A[React Frontend] -->|API Calls| B[Express Backend];
     B -->|Queries| C[MongoDB Database];
     B -->|Auth| D[JWT Authentication];
     A -->|UI/UX| E[User];
 
-📊** GitHub Stats**
+## 📊** GitHub Stats**
 <p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=Zatakiya2510&show_icons=true&theme=tokyonight" alt="GitHub Stats" width="48%" /> <img src="https://github-readme-streak-stats.herokuapp.com/?user=Zatakiya2510&theme=tokyonight" alt="GitHub Streak" width="48%" /> </p> <p align="center"> <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Zatakiya2510&layout=compact&theme=tokyonight" alt="Top Languages" width="48%" /> </p>
 
-👨‍💻 **Author**
+## 👨‍💻 **Author**
 
 Abhishek Zatakiya
 
