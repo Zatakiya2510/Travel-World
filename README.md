@@ -96,6 +96,7 @@ graph TD;
 
 ## 📊 GitHub Stats
 <p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=Zatakiya2510&show_icons=true&theme=tokyonight" width="48%" /> <img src="https://github-readme-streak-stats.herokuapp.com/?user=Zatakiya2510&theme=tokyonight" width="48%" /> </p> <p align="center"> <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Zatakiya2510&layout=compact&theme=tokyonight" width="48%" /> </p>
+
 ## 👨‍💻 Author
 
 **Abhishek Zatakiya**
