@@ -19,6 +19,11 @@ const LOCAL_URL = 'http://localhost:3000';
 // ✅ Optimized CORS Setup
 const corsOptions = {
     origin:[FRONTEND_URL, LOCAL_URL],
+<<<<<<< HEAD
+=======
+    origin:[FRONTEND_URL, LOCAL_URL],
+    origin: [FRONTEND_URL,LOCAL_URL],
+>>>>>>> 3cb7089 (Final Update)
     credentials: true,
     methods: "GET, POST, PUT, DELETE, OPTIONS",
     allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization"

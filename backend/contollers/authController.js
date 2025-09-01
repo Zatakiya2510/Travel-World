@@ -112,6 +112,10 @@ export const sendOtpForRegistration = async (req, res) => {
           </table>
         </body>
         </html>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3cb7089 (Final Update)
       `,
     };
 
@@ -261,6 +265,10 @@ export const sendOtpForPasswordReset = async (req, res) => {
       return res.status(400).json({ success: false, message: "Email is required" });
     }
 
+<<<<<<< HEAD
+=======
+    // Lowercase email for consistency
+>>>>>>> 3cb7089 (Final Update)
     const normalizedEmail = email.toLowerCase();
 
     // ✅ Check if user exists
@@ -301,6 +309,7 @@ export const sendOtpForPasswordReset = async (req, res) => {
 };
 
 
+<<<<<<< HEAD
 /** Step 2: Verify OTP */
 export const verifyResetOtp = async (req, res) => {
   try {
@@ -311,6 +320,20 @@ export const verifyResetOtp = async (req, res) => {
     }
 
     const normalizedEmail = email.toLowerCase();
+=======
+/** Step 2: Reset Password using OTP */
+export const resetPassword = async (req, res) => {
+  try {
+    let { email, otp, newPassword } = req.body;
+
+    if (!email || !otp || !newPassword) {
+      return res.status(400).json({ success: false, message: "Email, OTP, and new password are required" });
+    }
+
+    const normalizedEmail = email.toLowerCase();
+
+    // ✅ Get stored OTP
+>>>>>>> 3cb7089 (Final Update)
     const storedData = otpStorage.get(normalizedEmail);
 
     if (!storedData) {
@@ -323,11 +346,16 @@ export const verifyResetOtp = async (req, res) => {
       return res.status(400).json({ success: false, message: "OTP expired" });
     }
 
+<<<<<<< HEAD
     // ✅ Compare OTP
+=======
+    // ✅ Compare OTP (string-safe)
+>>>>>>> 3cb7089 (Final Update)
     if (String(storedData.otp) !== String(otp)) {
       return res.status(400).json({ success: false, message: "Invalid OTP" });
     }
 
+<<<<<<< HEAD
     // OTP is valid → mark as verified
     otpStorage.set(normalizedEmail, { ...storedData, verified: true });
 
@@ -361,6 +389,9 @@ export const setNewPassword = async (req, res) => {
       return res.status(400).json({ success: false, message: "OTP verification required before resetting password" });
     }
 
+=======
+    // ✅ Check if user exists
+>>>>>>> 3cb7089 (Final Update)
     const user = await User.findOne({ email: normalizedEmail });
     if (!user) {
       return res.status(404).json({ success: false, message: "User not found" });
@@ -374,7 +405,11 @@ export const setNewPassword = async (req, res) => {
     user.password = hash;
     await user.save();
 
+<<<<<<< HEAD
     // Clear OTP after success
+=======
+    // Remove OTP from storage
+>>>>>>> 3cb7089 (Final Update)
     otpStorage.delete(normalizedEmail);
 
     return res.status(200).json({ success: true, message: "Password reset successful" });
