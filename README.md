@@ -44,8 +44,8 @@ Travel World allows users to explore tours, book their trips, and manage booking
 
 ## 🔗 Live Demo  
 
-👉 [Travel World Live Website](https://tour-frontend-tawny.vercel.app/home)  
-👉 [Backend API](https://dashboard.render.com/web/srv-cvfaugbqf0us73foavc0)  
+👉 [Travel World Live Website](https://travel-frontend-chi-three.vercel.app/home)  
+👉 [Backend API](https://travel-backend-liart.vercel.app/)  
 
 ---
 
